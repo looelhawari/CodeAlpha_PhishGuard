@@ -1,0 +1,235 @@
+{
+  "emails": [
+    {
+      "id": "easy-01-nigerian",
+      "difficulty": "easy",
+      "isPhishing": true,
+      "from": { "name": "Prince Adekunle", "address": "prince.adekunle@royal-bnk-ng.com" },
+      "to": "you@example.com",
+      "subject": "URGENT BUSINESS PROPOSAL - $14,500,000 USD",
+      "date": "2026-03-14T03:21:00Z",
+      "headerIndicators": {
+        "from": "ind-sender-suspicious",
+        "subject": "ind-urgency-caps"
+      },
+      "indicators": [
+        { "id": "ind-sender-suspicious", "type": "Suspicious sender domain",
+          "explanation": "Unknown 'royal-bnk-ng.com' has no legitimate banking presence; the missing 'a' in 'bnk' is a classic spoof." },
+        { "id": "ind-urgency-caps", "type": "Urgency / shouting",
+          "explanation": "ALL-CAPS subjects with money amounts are textbook 419-scam markers." },
+        { "id": "ind-too-good", "type": "Too good to be true",
+          "explanation": "A stranger offering you millions for nothing is the oldest scam on the internet." },
+        { "id": "ind-grammar", "type": "Bad grammar",
+          "explanation": "'I am wanting to transfer' is non-native phrasing typical of these mailings." }
+      ],
+      "bodyHtml": "<p>Greetings my dear friend,</p><p data-indicator=\"ind-grammar\">I am wanting to transfer the sum of $14,500,000 USD to your country with your help.</p><p data-indicator=\"ind-too-good\">If you assist me, you will be entitled to 30% of the total sum, equivalent to $4.35 million USD.</p><p>Please reply immediately with your full name, bank account number, and a copy of your ID so we may proceed.</p><p>Yours faithfully,<br/>Prince Adekunle</p>"
+    },
+
+    {
+      "id": "easy-02-prize",
+      "difficulty": "easy",
+      "isPhishing": true,
+      "from": { "name": "Apple Rewards", "address": "winners@apple-promo-rewardz.com" },
+      "to": "you@example.com",
+      "subject": "Congratulations! You've won a new iPhone 17 Pro 🎉",
+      "date": "2026-03-12T17:48:00Z",
+      "headerIndicators": { "from": "ind-spoofed-brand" },
+      "indicators": [
+        { "id": "ind-spoofed-brand", "type": "Brand impersonation",
+          "explanation": "Apple uses apple.com, never 'apple-promo-rewardz.com'. The casual 'z' is the giveaway." },
+        { "id": "ind-link-mismatch", "type": "Deceptive link",
+          "explanation": "Hover shows the link goes to bit.ly/x9JK2 — never to apple.com." },
+        { "id": "ind-claim-deadline", "type": "Artificial deadline",
+          "explanation": "'Claim within 24 hours' pressures you to act before thinking." }
+      ],
+      "bodyHtml": "<p>Hello lucky winner!</p><p>You have been selected as the recipient of a brand new <strong>iPhone 17 Pro</strong>.</p><p data-indicator=\"ind-link-mismatch\">To claim your prize, <a href=\"#\">click here to verify your shipping address</a>.</p><p data-indicator=\"ind-claim-deadline\">This offer expires in 24 hours.</p><p>Apple Promotions Team</p>"
+    },
+
+    {
+      "id": "medium-01-paypal",
+      "difficulty": "medium",
+      "isPhishing": true,
+      "from": { "name": "PayPal Service", "address": "service@paypa1-secure.com" },
+      "to": "you@example.com",
+      "subject": "We've temporarily limited your account",
+      "date": "2026-03-15T09:14:00Z",
+      "headerIndicators": { "from": "ind-typosquat" },
+      "indicators": [
+        { "id": "ind-typosquat", "type": "Typo-squatted domain",
+          "explanation": "'paypa1-secure.com' uses a numeral 1 instead of letter L. Real PayPal mail comes from paypal.com." },
+        { "id": "ind-generic-greeting", "type": "Generic greeting",
+          "explanation": "Real services address you by name — not 'Dear Customer'." },
+        { "id": "ind-cred-request", "type": "Credential harvest",
+          "explanation": "PayPal will never ask you to confirm your password by clicking an email link." },
+        { "id": "ind-spoofed-link", "type": "Spoofed link",
+          "explanation": "The button text says paypal.com, but the underlying href points elsewhere." }
+      ],
+      "bodyHtml": "<p data-indicator=\"ind-generic-greeting\">Dear Customer,</p><p>We've noticed unusual activity on your account and have temporarily limited some features for your protection.</p><p data-indicator=\"ind-cred-request\">To restore full access, please verify your identity by signing in below.</p><p><a data-indicator=\"ind-spoofed-link\" href=\"#\">Verify my account → paypal.com/security</a></p><p>If you do not act within 48 hours, your account will be permanently suspended.</p><p>— PayPal Security</p>"
+    },
+
+    {
+      "id": "medium-02-shipping",
+      "difficulty": "medium",
+      "isPhishing": true,
+      "from": { "name": "DHL Notifications", "address": "alerts@dhl-delivery-tracking.info" },
+      "to": "you@example.com",
+      "subject": "Delivery failed - action required (Tracking #DH9482-XR12)",
+      "date": "2026-03-16T11:02:00Z",
+      "headerIndicators": { "from": "ind-suspicious-tld" },
+      "indicators": [
+        { "id": "ind-suspicious-tld", "type": "Suspicious domain / TLD",
+          "explanation": "DHL uses dhl.com, never '.info' subdomains or hyphenated tracking domains." },
+        { "id": "ind-attachment-risk", "type": "Malicious attachment",
+          "explanation": "Real shipping notices link to a tracking page — they don't attach .zip or .html files containing forms." },
+        { "id": "ind-urgency-fee", "type": "Small fee + urgency",
+          "explanation": "Asking for a tiny re-delivery fee is a credential/credit-card phish." }
+      ],
+      "attachments": [
+        { "name": "tracking_details.zip", "indicator": "ind-attachment-risk" }
+      ],
+      "bodyHtml": "<p>Your package could not be delivered because the address is incomplete.</p><p data-indicator=\"ind-urgency-fee\">Please confirm your address and pay a $2.99 re-delivery fee within 24 hours, or the parcel will be returned to sender.</p><p>See the attached document for tracking details.</p>"
+    },
+
+    {
+      "id": "medium-03-legit-newsletter",
+      "difficulty": "medium",
+      "isPhishing": false,
+      "from": { "name": "GitHub", "address": "noreply@github.com" },
+      "to": "you@example.com",
+      "subject": "Weekly digest: 3 repos you starred had releases",
+      "date": "2026-03-17T08:00:00Z",
+      "indicators": [],
+      "bodyHtml": "<p>Hi,</p><p>Here's what's new in the repositories you follow this week:</p><ul><li><strong>scapy/scapy</strong> 2.7.1 — bug fixes.</li><li><strong>tiangolo/fastapi</strong> 0.115.0 — security release.</li><li><strong>textualize/textual</strong> 0.83.0 — new widgets.</li></ul><p>Manage your notification preferences at github.com/settings/notifications.</p><p>— GitHub</p>"
+    },
+
+    {
+      "id": "hard-01-it-helpdesk",
+      "difficulty": "hard",
+      "isPhishing": true,
+      "from": { "name": "IT Helpdesk", "address": "it-helpdesk@yourcompany-it.co" },
+      "to": "you@yourcompany.com",
+      "subject": "Mandatory MFA re-enrollment by EOD",
+      "date": "2026-03-15T08:45:00Z",
+      "headerIndicators": { "from": "ind-lookalike-domain" },
+      "indicators": [
+        { "id": "ind-lookalike-domain", "type": "Lookalike internal domain",
+          "explanation": "Real IT mail comes from yourcompany.com, NOT yourcompany-it.co. Attackers append words like '-it', '-hr', '-secure'." },
+        { "id": "ind-deadline-eod", "type": "EOD deadline",
+          "explanation": "'By end of day' deadlines pressure you to skip verification." },
+        { "id": "ind-spoofed-portal", "type": "Lookalike portal URL",
+          "explanation": "Real SSO URLs match your tenant. This link goes to mfa-yourcompany-portal.app." }
+      ],
+      "bodyHtml": "<p>Hi,</p><p>IT is rolling out a new multi-factor authentication policy. <span data-indicator=\"ind-deadline-eod\">All employees must re-enroll their device by end of day today</span>; failure to do so will lock your account.</p><p>Please re-enroll here: <a data-indicator=\"ind-spoofed-portal\" href=\"#\">https://mfa.yourcompany-it.co/enroll</a></p><p>If you have any questions, reply to this email.</p><p>— IT Service Desk</p>"
+    },
+
+    {
+      "id": "hard-02-invoice",
+      "difficulty": "hard",
+      "isPhishing": true,
+      "from": { "name": "Sarah Chen, Acme Vendors", "address": "sarah.chen@acmevendor.co" },
+      "to": "you@yourcompany.com",
+      "subject": "Updated wire instructions for invoice INV-2026-0451",
+      "date": "2026-03-15T14:10:00Z",
+      "headerIndicators": { "from": "ind-supplier-domain" },
+      "indicators": [
+        { "id": "ind-supplier-domain", "type": "Slightly-wrong supplier domain",
+          "explanation": "Your real vendor is acmevendors.com (plural). This is the singular '.co' variant — classic BEC vector." },
+        { "id": "ind-changed-banking", "type": "Banking-info change request",
+          "explanation": "Mid-flight changes to wire instructions are the #1 indicator of business email compromise. Always verify out-of-band." },
+        { "id": "ind-no-thread", "type": "No prior thread context",
+          "explanation": "A vendor changing banking details usually does so after months of relationship — not in a cold one-shot email." }
+      ],
+      "attachments": [
+        { "name": "INV-2026-0451-updated.pdf" }
+      ],
+      "bodyHtml": "<p>Hi team,</p><p>Please find attached the updated invoice INV-2026-0451.</p><p data-indicator=\"ind-changed-banking\">Our banking details have changed effective immediately. Please use the new account on the attached invoice for all upcoming payments.</p><p data-indicator=\"ind-no-thread\">Let me know if you have any questions and please confirm receipt of the updated details.</p><p>Best regards,<br/>Sarah Chen<br/>Acme Vendors</p>"
+    },
+
+    {
+      "id": "hard-03-legit-it",
+      "difficulty": "hard",
+      "isPhishing": false,
+      "from": { "name": "IT Service Desk", "address": "it-servicedesk@yourcompany.com" },
+      "to": "you@yourcompany.com",
+      "subject": "Scheduled maintenance Saturday 03/22 from 02:00-04:00 UTC",
+      "date": "2026-03-18T15:32:00Z",
+      "indicators": [],
+      "bodyHtml": "<p>Hi all,</p><p>This Saturday, March 22, between 02:00 and 04:00 UTC, the VPN gateway will be unavailable for routine patching. No action is required from you. Reach out to itsupport@yourcompany.com (ext. 4500) with any questions.</p><p>Ticket reference: CHG-49281.</p><p>— IT Service Desk</p>"
+    },
+
+    {
+      "id": "apt-01-spear",
+      "difficulty": "apt",
+      "isPhishing": true,
+      "from": { "name": "Daniela Morales (Chief of Staff)", "address": "daniela.morales@yourcompany-ceooffice.com" },
+      "to": "you@yourcompany.com",
+      "subject": "Quick favor before tomorrow's board meeting",
+      "date": "2026-03-15T16:42:00Z",
+      "headerIndicators": { "from": "ind-display-name-spoof" },
+      "indicators": [
+        { "id": "ind-display-name-spoof", "type": "Display-name spoofing",
+          "explanation": "The display name impersonates a known executive, but the address ends in '-ceooffice.com' — a domain registered last week." },
+        { "id": "ind-pretext-secrecy", "type": "Pretext + secrecy",
+          "explanation": "The 'don't mention this to anyone' pretext blocks out-of-band verification." },
+        { "id": "ind-gift-card", "type": "Gift-card request",
+          "explanation": "Gift cards are an untraceable cash-equivalent; legitimate executives never ask for them by email." }
+      ],
+      "bodyHtml": "<p>Hi,</p><p>I'm in back-to-back meetings with the board today and need your help with a quick task.</p><p data-indicator=\"ind-gift-card\">Could you please pick up four $500 Amazon gift cards for tomorrow's recognition presentation? I'll reimburse you afterward.</p><p data-indicator=\"ind-pretext-secrecy\">Please don't mention this in chat — the recipients shouldn't get wind of it.</p><p>Thanks,<br/>Daniela</p>"
+    },
+
+    {
+      "id": "apt-02-conference",
+      "difficulty": "apt",
+      "isPhishing": true,
+      "from": { "name": "BlackHat Briefings", "address": "speakers@blackhat-conference.events" },
+      "to": "you@example.com",
+      "subject": "Speaker slot confirmation — please review your bio",
+      "date": "2026-03-16T10:25:00Z",
+      "headerIndicators": { "from": "ind-conference-spoof" },
+      "indicators": [
+        { "id": "ind-conference-spoof", "type": "Conference brand spoof",
+          "explanation": "Real Black Hat uses blackhat.com — never '.events' subdomains." },
+        { "id": "ind-doc-attachment", "type": "Office document attachment",
+          "explanation": "Attached .docm files frequently host malicious macros. Legit confs send web links to a CMS." },
+        { "id": "ind-ego-bait", "type": "Ego-bait pretext",
+          "explanation": "Telling a target they were 'selected as a speaker' encourages them to open attachments without scrutiny." }
+      ],
+      "attachments": [
+        { "name": "Speaker_Bio_Review.docm", "indicator": "ind-doc-attachment" }
+      ],
+      "bodyHtml": "<p>Dear researcher,</p><p data-indicator=\"ind-ego-bait\">Congratulations — your talk has been accepted for the upcoming Black Hat Briefings.</p><p>Please review the attached bio and submit your edits at your earliest convenience.</p><p>Best,<br/>BlackHat Programme Committee</p>"
+    },
+
+    {
+      "id": "apt-03-legit-vendor",
+      "difficulty": "apt",
+      "isPhishing": false,
+      "from": { "name": "AWS Support", "address": "no-reply@aws-support.amazon.com" },
+      "to": "you@yourcompany.com",
+      "subject": "Case 17223849: Update on your support inquiry",
+      "date": "2026-03-18T19:01:00Z",
+      "indicators": [],
+      "bodyHtml": "<p>Hello,</p><p>Thank you for contacting AWS Support. We have replied to your case 17223849. To view our response, sign in to the AWS Console and visit the Support Center. We never include reply-to-this-email links in case updates.</p><p>— AWS Support</p>"
+    },
+
+    {
+      "id": "apt-04-recruiter",
+      "difficulty": "apt",
+      "isPhishing": true,
+      "from": { "name": "Megan Williams, Talent Partner", "address": "megan.williams@careers-meta-platform.io" },
+      "to": "you@example.com",
+      "subject": "Re: Staff Engineer opportunity at Meta — assessment link",
+      "date": "2026-03-17T12:53:00Z",
+      "headerIndicators": { "from": "ind-fake-recruiter-domain" },
+      "indicators": [
+        { "id": "ind-fake-recruiter-domain", "type": "Fake recruiter domain",
+          "explanation": "Real Meta recruiters write from @meta.com. The hyphen-rich '.io' look-alike is a registered domain trick." },
+        { "id": "ind-skills-test-link", "type": "External 'skills test' link",
+          "explanation": "Recent campaigns ask candidates to install signed binaries posing as coding tests; these drop info-stealers." },
+        { "id": "ind-too-warm", "type": "Unprompted 'Re:'",
+          "explanation": "The 'Re:' implies you replied first — you didn't. A trick to bypass spam filters and feel familiar." }
+      ],
+      "bodyHtml": "<p>Hi,</p><p data-indicator=\"ind-too-warm\">Following up on our earlier chat — I'd love to move you forward in our process for the Staff Engineer role.</p><p data-indicator=\"ind-skills-test-link\">Please download the take-home assessment tool here: <a href=\"#\">meta-skills-assessment.exe</a>. Run it, complete the four tasks, and the results will upload automatically.</p><p>Looking forward to your submission!</p><p>Megan</p>"
+    }
+  ]
+}

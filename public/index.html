@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhishGuard — Spot the Phish</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🛡️</span>
+      <span class="brand-name">PhishGuard</span>
+      <span class="brand-tag">Spot the Phish</span>
+    </div>
+    <nav class="hud">
+      <div class="hud-item"><span class="hud-label">Reviewed</span><span id="hud-reviewed">0 / 0</span></div>
+      <div class="hud-item"><span class="hud-label">Score</span><span id="hud-score">0</span></div>
+      <div class="hud-item"><span class="hud-label">Tier</span><span id="hud-tier">Easy</span></div>
+      <button id="btn-restart" class="btn-ghost">Restart</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="inbox">
+      <h2 class="inbox-title">Inbox</h2>
+      <ul id="email-list" class="email-list"></ul>
+    </aside>
+
+    <section class="email-view">
+      <div id="email-empty" class="empty-state">Select an email from the inbox to begin.</div>
+
+      <article id="email-pane" class="email-pane hidden">
+        <header class="email-header">
+          <div class="row"><span class="lbl">From:</span>
+            <span class="val" data-zone="from">
+              <span class="from-name"></span>
+              <span class="from-addr"></span>
+            </span>
+          </div>
+          <div class="row"><span class="lbl">To:</span>
+            <span class="val" data-zone="to"></span>
+          </div>
+          <div class="row"><span class="lbl">Subject:</span>
+            <span class="val subject" data-zone="subject"></span>
+          </div>
+          <div class="row"><span class="lbl">Date:</span>
+            <span class="val date"></span>
+          </div>
+          <div id="attachments" class="attachments"></div>
+        </header>
+        <div class="email-body" id="email-body"></div>
+
+        <footer class="email-actions">
+          <div class="action-help">
+            <strong>Click anything suspicious</strong> — senders, links, urgency words, attachments.
+            Then make your call.
+          </div>
+          <div class="action-buttons">
+            <button id="btn-legit" class="btn-primary">It's Legitimate</button>
+            <button id="btn-phish" class="btn-danger">It's Phishing</button>
+          </div>
+        </footer>
+      </article>
+
+      <div id="result-pane" class="result-pane hidden"></div>
+    </section>
+
+    <aside class="indicators-panel">
+      <h3>Indicators flagged</h3>
+      <ul id="flagged-list" class="flagged-list">
+        <li class="empty">Nothing flagged yet.</li>
+      </ul>
+      <div id="tutor-block" class="tutor-block">
+        <h4>AI Tutor</h4>
+        <textarea id="tutor-input" placeholder="Ask the tutor anything about this email…" rows="2"></textarea>
+        <button id="btn-tutor" class="btn-primary">Ask tutor</button>
+        <div id="tutor-output" class="tutor-output"></div>
+        <div class="tutor-status" id="tutor-status">AI tutor offline — start the Flask backend.</div>
+      </div>
+      <details class="cheatsheet">
+        <summary>What to look for</summary>
+        <ul>
+          <li><strong>Sender:</strong> Display name vs. real address mismatch?</li>
+          <li><strong>Domain:</strong> Typo-squat (paypa<i>1</i>.com, micros<i>0</i>ft.com)?</li>
+          <li><strong>Urgency:</strong> "24 hours", "account locked", "legal action".</li>
+          <li><strong>Generic greeting:</strong> "Dear customer" instead of your name.</li>
+          <li><strong>Attachments:</strong> <code>.exe</code>, <code>.zip</code>, <code>.html</code> forms.</li>
+          <li><strong>Links:</strong> Hover — does the URL match the brand?</li>
+          <li><strong>Grammar:</strong> Odd capitalization, missing articles.</li>
+          <li><strong>Credentials:</strong> Asking you to "verify" your password.</li>
+        </ul>
+      </details>
+    </aside>
+  </main>
+
+  <div id="final-report" class="modal hidden">
+    <div class="modal-body">
+      <h2>Training Complete</h2>
+      <div id="final-stats"></div>
+      <h3>By indicator type</h3>
+      <div id="final-breakdown"></div>
+      <button id="btn-close-final" class="btn-primary">Play Again</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
