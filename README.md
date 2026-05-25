@@ -5,8 +5,8 @@
 PhishGuard drops the learner inside a realistic email inbox and asks them to hunt the red flags. Every click is scored, every mistake is explained — and an optional AI tutor (Groq `openai/gpt-oss-20b`) gives personalised feedback in plain English.
 
 🔗 **Repo:** https://github.com/looelhawari/CodeAlpha_PhishGuard
-📺 **Video walkthrough:** *(coming soon — link will be added here and in the LinkedIn post)*
-🌐 **Live demo:** *(deploy `public/` to GitHub Pages — instructions below)*
+📺 **Video walkthrough:** *https://www.linkedin.com/posts/ali-ayman-4120a6364_codealpha-cybersecurity-internship-activity-7464521336749678592-z5xv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFptFM4BjDgDAdTSRe-5_7cfOjODkdQhyCghttps://www.linkedin.com/posts/ali-ayman-4120a6364_codealpha-cybersecurity-internship-activity-7464521336749678592-z5xv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFptFM4BjDgDAdTSRe-5_7cfOjODkdQhyCg*
+
 
 ---
 
